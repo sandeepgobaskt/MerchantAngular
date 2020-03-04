@@ -1,0 +1,230 @@
+<div class="pt-3 signup-bg" *ngIf="category === 'consumer'">
+  <div class="container">
+    <div class="col-md-12 text-center pb-80">
+      <!-- <span class="f-18 mr-10">Make</span> -->
+      <h3 class="d-inline f-bold f-28">Make Your Brand known to All</h3>
+      <p class="f-18">Discover Great deals quickly and save time money and efforts while engaging with business </p>
+    </div>
+    <div class="row m-0">
+      <div class="col-md-6">
+        <img class="img-fluid h-20" src="assets/images/signup_img.png" alt="signup" />
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default cus-bg">
+          <div class="partner-login">
+            <h3 class="title-partner">Sign Up as New User</h3>
+            <p class="f-15">Quick 4 step form, helping you save your time</p>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal" role="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="fname" class="form-control inpt" formControlName="firstName" id="inputfName"
+                    maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                    placeholder="First name">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="f.firstName.errors?.required">Enter your
+                    name</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="lname" class="form-control inpt" formControlName="lastName" id="inputlName"
+                    maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" placeholder="Last name">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="f.lastName.errors?.required">Enter your
+                    name</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="email" class="form-control inpt" formControlName="emailId" id="inputEmail" maxlength="50"
+                    [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" placeholder="Enter your email">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="f.emailId.errors?.required">Enter proper
+                    email
+                    id</span>
+
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="password" class="form-control inpt" formControlName="password" id="inputPassword"
+                    maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="f.password.errors?.required">Enter valid
+                    password</span>
+                </div>
+              </div>
+              <!--  <span class="invalid-feedback cust-feedback-align" *ngIf="f.emailAlredyExist.errors?.required">Enter valid
+                password</span> -->
+              <div class="form-group last">
+                <div class="col-sm-12">
+                  <button type="submit" class="col-sm-12 btn-clr-blue btn btn-sm">
+                    Sign Up</button>
+                  <div *ngIf="errorMsg">
+                    <p class="mail-already-exist">Your Email {{errorMsg}}</p>
+                  </div>
+                  <div *ngIf="successMsg">
+                    <p class="mail-sent">{{successMsg}}</p>
+                  </div>
+                  <p class="text-center pt-3">Already has a merchant account with us? <a [routerLink]="['/auth/login']"
+                      class="cursor-pointer f-bold clr-blue">Click Here</a> to login</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pt-3 signup-bg" *ngIf="category === 'merchant'">
+  <div class="container">
+    <div class="col-md-12 text-center pb-80">
+      <!-- <span class="f-18 mr-10">Make</span> -->
+      <h3 class="d-inline f-bold" style="font-size: 20px;">Make Your Brand known to customer in your locality</h3>
+      <p class="f-18">Partner with us today & increase your reach.</p>
+    </div>
+    <div class="row m-0">
+      <div class="col-md-6">
+        <img class="img-fluid h-20" src="assets/images/signup_img.png" alt="signup" />
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default cus-bg">
+          <div class="partner-login">
+            <h3 class="title-partner">Sign Up as a New Merchant</h3>
+            <!-- <p class="f-15">Quick 4 step form, helping you save your time</p> -->
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal" role="form" [formGroup]="merchantRegisterForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="fname" class="form-control inpt" formControlName="bpprimaryContactName" id="inputfName"
+                    maxlength="50" [ngClass]="{ 'is-invalid': submitted && g.bpprimaryContactName.errors }"
+                    placeholder="First name">
+                  <span class="invalid-feedback cust-feedback-align"
+                    *ngIf="g.bpprimaryContactName.errors?.required">Enter your
+                    First Name</span>
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="fname" class="form-control inpt" formControlName="bpprimaryContactName" id="inputfName"
+                    maxlength="50" [ngClass]="{ 'is-invalid': submitted && g.bpprimaryContactName.errors }"
+                    placeholder="Last Name">
+                  <span class="invalid-feedback cust-feedback-align"
+                    *ngIf="g.bpprimaryContactName.errors?.required">Enter your
+                    Last Name</span>
+                </div>
+              </div> -->
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="text" class="form-control inpt" formControlName="bpname" id="inputlName" maxlength="50"
+                    [ngClass]="{ 'is-invalid': submitted && g.bpname.errors }" placeholder="Business Name">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="g.bpname.errors?.required">Enter your
+                    Business Name</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input [class.is-invalid]="merchantRegisterForm.get('emailId').invalid && merchantRegisterForm.get('emailId').touched" type="email" class="form-control inpt" formControlName="emailId" id="inputEmail" maxlength="50"
+                      placeholder="Business Email"/>
+                      <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                        <small *ngIf="primEmail.errors?.required" class="text-danger">Email is required</small>
+                        <!--question mark(?) is a safe navigation operator-->
+                        <small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+                      </div>
+                  <!-- <span class="invalid-feedback cust-feedback-align" *ngIf="g.emailId.errors?.required">Enter proper
+                    email
+                    id</span> -->
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input [class.is-invalid]="merchantRegisterForm.get('password').invalid && merchantRegisterForm.get('password').touched" type="password" class="form-control inpt" formControlName="password" id="inputEmail" maxlength="50"
+                      placeholder="Password"/>
+                      <div *ngIf="(passVal.invalid && passVal.touched) || passVal.dirty">
+                        <small *ngIf="passVal.errors?.required" class="text-danger">Password is required</small>
+                        <!--question mark(?) is a safe navigation operator-->
+                        <small *ngIf="passVal.errors?.pattern" class="text-danger">At least 8 characters in length,Lowercase letters,
+                          Uppercase letters,
+                          Numbers,
+                          Special characters</small>
+                      </div>
+                  <!-- <input type="password" class="form-control inpt" formControlName="password" id="inputPassword"
+                    maxlength="10" [ngClass]="{ 'is-invalid': submitted && g.password.errors }" placeholder="Password">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="g.password.errors?.required">Enter Valid
+                    Password
+                  </span> -->
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input [class.is-invalid]="merchantRegisterForm.get('bpcity').invalid && merchantRegisterForm.get('bpcity').touched" type="text" class="form-control inpt" formControlName="bpcity" id="inputCity" maxlength="25"
+                  placeholder="City"/>
+                  <div *ngIf="(cityVal.invalid && cityVal.touched) || cityVal.dirty">
+                    <small *ngIf="cityVal.errors?.required" class="text-danger">City is required</small>
+                    <!--question mark(?) is a safe navigation operator-->
+                    <small *ngIf="cityVal.errors?.pattern" class="text-danger">Please provide a valid City</small>
+                  </div>
+                  <!-- <input type="text" class="form-control inpt" formControlName="bpcity" id="inputCity" maxlength="50"
+                    [ngClass]="{ 'is-invalid': submitted && g.bpcity.errors }" placeholder="City">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="g.bpcity.errors?.required">Enter valid
+                    City</span> -->
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input [class.is-invalid]="merchantRegisterForm.get('bpzipcode').invalid && merchantRegisterForm.get('bpzipcode').touched" type="text" class="form-control inpt" formControlName="bpzipcode" id="inputZipCode" maxlength="6"
+                      placeholder="ZipCode"/>
+                      <div *ngIf="(zipVal.invalid && zipVal.touched) || zipVal.dirty">
+                        <small *ngIf="zipVal.errors?.required" class="text-danger">ZipCode is required</small>
+                        <!--question mark(?) is a safe navigation operator-->
+                        <small *ngIf="zipVal.errors?.pattern" class="text-danger">Please provide a valid ZipCode</small>
+                      </div>
+
+                  <!-- <input type="text" class="form-control inpt" formControlName="bpzipcode" id="inputZipCode"
+                    maxlength="6" [ngClass]="{ 'is-invalid': submitted && g.bpzipcode.errors }" placeholder="Zip Code">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="g.bpzipcode.errors?.required">Enter valid
+                    Zip Code</span> -->
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input [class.is-invalid]="merchantRegisterForm.get('bpwebsite').invalid && merchantRegisterForm.get('bpwebsite').touched" type="text" class="form-control inpt" formControlName="bpwebsite" id="inputwebsite" maxlength="50"
+                      placeholder="WebSite"/>
+                      <div *ngIf="(webVal.invalid && webVal.touched) || webVal.dirty">
+                        <small *ngIf="webVal.errors?.required" class="text-danger">WebSite is required</small>
+                        <!--question mark(?) is a safe navigation operator-->
+                        <small *ngIf="webVal.errors?.pattern" class="text-danger">Please provide a valid Website Name</small>
+                      </div>
+                  <!-- <input type="text" class="form-control inpt" formControlName="bpwebsite" id="inputwebsite"
+                    maxlength="50" [ngClass]="{ 'is-invalid': submitted && g.bpwebsite.errors }" placeholder="WebSite">
+                  <span class="invalid-feedback cust-feedback-align" *ngIf="g.bpwebsite.errors?.required">Enter valid
+                    Website</span> -->
+                </div>
+              </div>
+              <div class="form-group last">
+                <div class="col-sm-12">
+                  <button type="submit" class="col-sm-12 btn-clr-blue btn btn-sm">
+                    Sign Up</button>
+                  <div *ngIf="errorMsg">
+                    <p class="mail-already-exist">Your Email {{errorMsg}}</p>
+                  </div>
+                  <div *ngIf="errMsg">
+                    <p class="mail-already-exist">{{errMsg}}</p>
+                  </div>
+                  <div *ngIf="successMsg">
+                    <p class="mail-sent">{{successMsg}}</p>
+                  </div>
+                  <p class="text-center pt-3">Already has a merchant account with us? <a [routerLink]="['/auth/login']"
+                      class="cursor-pointer f-bold clr-blue">Click Here</a> to Login</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div *ngIf="pass" style="display: none;">
+  <app-signup-complete [email]="email"></app-signup-complete>
+</div> -->

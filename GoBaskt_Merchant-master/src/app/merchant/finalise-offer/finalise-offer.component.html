@@ -1,0 +1,200 @@
+<div class="row followers" style="margin: 0;">
+    <div class="col-3 background">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-9">
+        <div class="container-fluid pb-4 pr-0">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="createoffer" style="margin: 0;">Please enter details</p>
+                    <p class="createoffer" style="margin: 0;">of offer to be created</p>
+                    <span>(Approx. time needed - 3 mins)</span>
+                    <p class="copy mt-3">To copy a past expired or ongoing offer</p>
+                    <!-- <input class="coupon mb-3" placeholder="Search here" type="text"> -->
+                    <div class="mb-2" style="margin-left: 60%;">
+                        <mat-search-bar></mat-search-bar>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <p class="createoffer">Create an Offer</p>
+                    <p class="copy">Instructions to update offer</p>
+                    <p>1. Click on the relevant offer elements and edit the text or change the image.</p>
+                    <p>2. To change placement / location of an offer element, drag and drop it at the
+                        intended location within the offer card.</p>
+                </div>
+            </div>
+            <div>
+                <form [formGroup]="createOfferForm">
+                    <p class="copy">Edit Your Offer Template</p>
+                    <div class="row" *ngIf="draftedData.selectedTemplateId === 'TEMP1'">
+                        <div class="col-md-6 mb-2">
+                            <mat-card class="offer cursor-pointer full-width" [ngStyle]="backgroundCss" id="offerfrond"
+                                (click)="selectTemplate('TEMP1')">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h6 class="text-white text-center heading1">{{bpname}}</h6>
+                                        <input type="text" class="text-center text-white m-0 template"
+                                            formControlName="lmofferTitle" placeholder="Offer Name"
+                                            [value]="draftedData.lmofferTitle">
+                                        <!-- <h6 class="text-white text-center heading1">{{draftedData.lmofferTitle}}</h6> -->
+                                        <div class="row text-center">
+                                            <div class="col">
+                                                <!-- <p class="text-white m-0 heading1">{{draftedData.lmdescription}}</p> -->
+                                                <input type="text" class="text-white m-0 template"
+                                                    cdkDragBoundary=".offer" formControlName="lmdescription"
+                                                    placeholder="Description" [value]="draftedData.lmdescription"
+                                                    cdkDrag>
+                                            </div>
+                                            <div class="col">
+                                                <!-- <p class="text-white m-0 heading1">{{draftedData.offerExpiryDate}}</p> -->
+                                                <input type="text" class="text-white m-0 template"
+                                                    cdkDragBoundary=".offer" formControlName="offerExpiryDate"
+                                                    placeholder="Description" [value]="draftedData.offerExpiryDate"
+                                                    cdkDrag>
+                                            </div>
+                                            <div class="col">
+                                                <!-- <p class="text-white m-0 heading1">{{draftedData.offerExpiryDate}}</p> -->
+                                                <input type="text" class="text-white m-0 template"
+                                                    cdkDragBoundary=".offer" name="lmofferValue"
+                                                    placeholder="Value" [value]="draftedData.lmofferValue"
+                                                    cdkDrag>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-12 text-center">
+                                                <p class="text-white m-0 heading1">Address</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-card class="offer cursor-pointer full-width" [ngStyle]="backgroundCss" id="offerback"
+                                (click)="selectTemplate('TEMP1')">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h6 class="text-white recommended">Terms &
+                                            Conditions</h6>
+                                        <div class="row m-1">
+                                            <ul style="list-style: none;" class="m-0">
+                                                <li class="text-white heading1">Use for
+                                                    {{draftedData.offer_TAndC_UsageTerms}}</li>
+                                                <li class="text-white heading1">Applicable on
+                                                    {{draftedData.offer_TAndC_ApplicableOn}}</li>
+                                                <li class="text-white heading1">Valid for
+                                                    {{draftedData.offer_TAndC_ValidFor}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="draftedData.selectedTemplateId === 'TEMP2'">
+                        <div class="col-md-6 mb-2">
+                            <mat-card class="offer cursor-pointer full-width" [ngStyle]="backgroundCss1"
+                                (click)="selectTemplate('TEMP2')">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-white mt-2 heading1">{{bpname}}</h6>
+                                        <h6 class="text-white mt-2 heading1">{{draftedData.lmofferTitle}}</h6>
+                                        <!-- <p class="text-white m-0 heading1">{{draftedData.lmdescription}}</p> -->
+                                        <input type="text" class="text-white m-0 template" cdkDragBoundary=".offer"
+                                            formControlName="lmdescription" placeholder="Description"
+                                            [value]="draftedData.lmdescription" cdkDrag>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- <p class="text-white mt-2 heading1">{{draftedData.offerExpiryDate}}</p> -->
+                                        <input type="text" class="text-white m-0 template" cdkDragBoundary=".offer"
+                                            formControlName="offerExpiryDate" placeholder="Description"
+                                            [value]="draftedData.offerExpiryDate" cdkDrag>
+                                        <p class="text-white heading1 m-0">Address</p>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-card class="offer cursor-pointer full-width" [ngStyle]="backgroundCss1" id="offerback"
+                                (click)="selectTemplate('TEMP2')">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h6 class="text-white recommended">Terms &
+                                            Conditions</h6>
+                                        <div class="row m-1">
+                                            <ul style="list-style: none;" class="m-0">
+                                                <li class="text-white heading1">Use for
+                                                    {{draftedData.offer_TAndC_UsageTerms}}</li>
+                                                <li class="text-white heading1">Applicable on
+                                                    {{draftedData.offer_TAndC_ApplicableOn}}</li>
+                                                <li class="text-white heading1">Valid for
+                                                    {{draftedData.offer_TAndC_ValidFor}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <p class="copy mt-2">Choose Color</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <mat-card class="col-1 block1 m-1 cursor-pointer" (click)="changeColor('#8ca1d0')">
+                                </mat-card>
+                                <mat-card class="col-1 block2 m-1 cursor-pointer" (click)="changeColor('#f87733')">
+                                </mat-card>
+                                <mat-card class="col-1 block3 m-1 cursor-pointer" (click)="changeColor('#eb7474')">
+                                </mat-card>
+                                <mat-card class="col-1 block4 m-1 cursor-pointer" (click)="changeColor('#8329e1')">
+                                </mat-card>
+                                <mat-card class="col-1 block5 m-1 cursor-pointer" (click)="changeColor('#50e3c2')">
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-card-actions class="float-right mt-3 text-center">
+                        <button mat-raised-button class="btn btn-outline-primary rounded-pill btn-clr m-1"
+                            data-toggle="modal" data-target="#previewModal" (click)="previewTemplate()">Preview
+                            Template</button>
+                        <button type="button" mat-raised-button class="btn rounded-pill btn-clr1 m-1"
+                            (click)="finaliseOffer()">Create
+                            Offer</button>
+                    </mat-card-actions>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="created">
+            <p class="text-center createoffer">{{successMsg}}</p>
+            <p class="text-center createoffer">To Publish the Offer ,
+                <a class="text-center createoffer" [routerLink]="['/merchant/run-compaign']">Click Here</a>
+            </p>
+            <p class="text-center createoffer"> Or Go to Run Compaign Page</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class=" modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Coupon Preview</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="mb-3" src="{{createOfferForm.value.frontTemplateUrl}}">
+                <img src="{{createOfferForm.value.backTemplateUrl}}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn rounded-pill btn-clr1 m-1" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+
+</div>

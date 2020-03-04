@@ -1,0 +1,92 @@
+<div class="pt-3 signup-bg">
+    <div class="container">
+        <div class="col-md-12 text-center pb-80">
+            <!-- <span class="f-18 mr-10">Make</span> -->
+            <h3 class="d-inline f-bold f-28">Your Brand known to All</h3>
+            <p class="f-18">Partner with us today & increase your reach <span [routerLink]="['/auth/login']"
+                    class="cursor-pointer f-bold clr-blue">Click Here</span></p>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-6">
+                <img class="img-fluid h-20" src="assets/images/signup_img.png" alt="signup" />
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default cus-bg">
+                    <div class="partner-login">
+                        <h3 class="title-partner">Consumer Sign Up Complete</h3>
+                        <!-- <p class="f-15">Quick 4 step form, helping you save your time</p> -->
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" [formGroup]="completeForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="fname" class="form-control inpt" formControlName="primaryMobile"
+                                        [ngClass]="{ 'is-invalid': submitted && f.primaryMobile.errors }"
+                                        placeholder="Mobile Number" >
+                                    <span class="invalid-feedback cust-feedback-align"
+                                        *ngIf="f.primaryMobile.errors?.required">Enter Mobile Number</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="fname" class="form-control inpt" formControlName="secondaryMobile"
+                                        [ngClass]="{ 'is-invalid': submitted && f.secondaryMobile.errors }" placeholder="Alternate Mobile Number">
+                                    <span class="invalid-feedback cust-feedback-align" *ngIf="f.secondaryMobile.errors?.required">Enter your alternate Mobile
+                                        Number</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="fname" class="form-control inpt" formControlName="address"
+                                        [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address">
+                                    <span class="invalid-feedback cust-feedback-align" *ngIf="f.address.errors?.required">Enter your
+                                        Address</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="fname" class="form-control inpt" formControlName="city"
+                                        [ngClass]="{ 'is-invalid': submitted && f.city.errors }" placeholder="City">
+                                    <span class="invalid-feedback cust-feedback-align" *ngIf="f.city.errors?.required">Enter your
+                                        City</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="fname" class="form-control inpt" formControlName="state"
+                                        [ngClass]="{ 'is-invalid': submitted && f.state.errors }" placeholder="State">
+                                    <span class="invalid-feedback cust-feedback-align" *ngIf="f.state.errors?.required">Enter your
+                                        State</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="number" class="form-control inpt" formControlName="zipcode"
+                                        [ngClass]="{ 'is-invalid': submitted && f.zipcode.errors }" placeholder="Pincode">
+                                    <span class="invalid-feedback cust-feedback-align" *ngIf="f.zipcode.errors?.required">Enter your
+                                        Pincode</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control inpt" formControlName="dateOfBirth"
+                                        [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" placeholder="Date Of Birth">
+                                    <span class="invalid-feedback cust-feedback-align" *ngIf="f.dateOfBirth.errors?.required">Enter your
+                                        Date of Birth</span>
+                                </div>
+                            </div>
+                            <div class="form-group last">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="col-sm-12 btn-clr-blue btn btn-sm">
+                                      Complete Sign Up</button>
+                                    <p class="text-center pt-3">Already a member?<a [routerLink]="['auth/login']"
+                                            class="cursor-pointer f-bold clr-blue">Click Here</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

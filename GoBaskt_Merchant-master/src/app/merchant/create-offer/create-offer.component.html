@@ -1,0 +1,529 @@
+<div class="row followers" style="margin: 0;">
+    <div class="col-3 background">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-9">
+        <div class="container-fluid pb-4 pr-0">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- <h1 [ngStyle]="headingCss">ETSTEFDYTFDY</h1> -->
+                    <p class="createoffer" style="margin: 0;">Please enter details</p>
+                    <p class="createoffer" style="margin: 0;">of offer to be created</p>
+                    <span>(Approx. time needed - 3 mins)</span>
+                    <p class="copy mt-3">To copy a past expired or ongoing offer</p>
+                    <input class="coupon mb-3" placeholder="Search here" type="text">
+                </div>
+            </div>
+
+            <mat-horizontal-stepper #stepper>
+                <mat-step [stepControl]="createOfferForm">
+                    <div class="card-body">
+                        <form [formGroup]="createOfferForm">
+                            <p class="createoffer">Create an Offer</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" style="font-weight: 600;"><label for="inputEmail1">Offer
+                                            Name</label>
+                                        <div class="col-sm-9 p-0"><input matInput class="form-control coupon"
+                                                id="inputEmail1" maxlength="8" placeholder="Offer Title" type="text"
+                                                formControlName="lmofferTitle" required>
+                                            <span class="invalid-feedback cust-feedback-align"
+                                                *ngIf="f.lmofferTitle.errors?.required">Enter Office Title</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="font-weight: 600;"><label for="inputEmail2">Offer
+                                            description</label>
+                                        <div class="col-sm-9 p-0"><input class="form-control coupon" id="inputEmail2"
+                                                placeholder="Offer Description" type="text" maxlength="8"
+                                                formControlName="lmdescription"></div>
+                                    </div>
+                                    <div style="font-weight: 600;"><label for="inputEmail3">Offer Terms &
+                                            Conditions</label>
+                                        <div class="form-group"><label for="inputEmail5">Usage Terms</label>
+                                            <div class="col-sm-9 p-0"><select class="form-control coupon"
+                                                    id="exampleFormControlSelect2"
+                                                    formControlName="offer_TAndC_UsageTerms">
+                                                    <option>Single Use Only</option>
+                                                    <option>Multiple Use For One Person</option>
+                                                    <option>Multiple Use Ofr Multiple Persons</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label for="inputEmail5">Applicable On</label>
+                                            <div class="col-sm-9 p-0"><select class="form-control coupon"
+                                                    id="exampleFormControlSelect3"
+                                                    formControlName="offer_TAndC_ApplicableOn">
+                                                    <option>All</option>
+                                                    <option>Subs</option>
+                                                    <option>Dosa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label for="inputEmail5">Valid For</label>
+                                            <div class="col-sm-9 p-0"><select class="form-control coupon"
+                                                    id="exampleFormControlSelect4"
+                                                    formControlName="offer_TAndC_ValidFor">
+                                                    <option>Delivery and In-store Purchase</option>
+                                                    <option>In-store Only</option>
+                                                    <option>Delivery Only</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" style="font-weight: 600;"><label for="inputEmail5">Offer
+                                            type</label>
+                                        <div class="col-sm-9 p-0"><select class="form-control coupon"
+                                                id="exampleFormControlSelect1" formControlName="lmofferType">
+                                                <option>Buy 1, Get 1 free</option>
+                                                <option>% off</option>
+                                                <option>$ off</option>
+                                                <option>Buy 1, get x% off on others</option>
+                                                <option>get $ value off on others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="font-weight: 600;"><label>Valid
+                                            from date</label>
+                                        <div class="col-sm-9 p-0"><input class="form-control coupon"
+                                                fromControlName="offerStartDate" placeholder="Offer Start Date"
+                                                type="date" #startDate></div>
+                                    </div>
+                                    <div class="form-group" style="font-weight: 600;"><label>Valid to
+                                            date</label>
+                                        <div class="col-sm-9 p-0"><input class="form-control coupon"
+                                                fromControlName="offerExpiryDate" placeholder="Ofer End Date"
+                                                type="date" #endDate></div>
+                                    </div>
+                                    <!-- Commenting because image upload is not done -->
+
+                                    <!-- <div class="form-group" style="font-weight: 600;"><label for="inputEmail7">Add an
+                                            image to offer</label>
+                                        <div class="col-sm-9 p-0"><input class="form-control coupon" id="inputEmail7"
+                                                formControlName="webOfferImage1" placeholder="" type="file">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" style="font-weight: 600;"><label for="inputEmail8">Choose
+                                            Card Template</label>
+                                        <div class="card-body p-0">
+                                            <div class="col-md-12 p-0">
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-2">
+                                                        <div [ngStyle]="backgroundCss"
+                                                            class="form-group card offer cursor-pointer" animates=""
+                                                            animatesinitmode="show" (click)="selectTemplate('TEMP1')">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-9">
+                                                                        <h6 class="text-white">Offer Name</h6>
+                                                                        <span
+                                                                            class="text-white m-0 recommended">Recommended
+                                                                            for</span>
+                                                                        <p class="text-white m-0 heading1">Dining,
+                                                                            Health & Services etc</p>
+                                                                        <p class="text-white m-0 recommended">Category
+                                                                            of brands</p>
+                                                                    </div>
+                                                                    <div class="col-md-2  text-center">
+                                                                        <!-- <img class="card-img bg-transparent" src="assets/images/Coupons/rectangle-28-copy-2.png" alt=""> -->
+                                                                        <img class="m-0"
+                                                                            src="assets/images/Coupons/order.png"
+                                                                            alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mt-2">
+                                                                    <div class="col-md-12">
+                                                                        <p class="text-white recommended m-0">Lorem
+                                                                            Ipsum is simply dummy text</p>
+                                                                        <p class="text-white recommended m-0">of the
+                                                                            printing and</p>
+                                                                        <p class="text-white recommended m-0">
+                                                                            typesetting</p>
+                                                                    </div>
+                                                                    <!-- <img class="mt-2" src="assets/images/Coupons/rectangle-28.png" alt=""> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 ">
+                                                        <div [ngStyle]="backgroundCss1"
+                                                            class="card offer1 cursor-pointer" animates=""
+                                                            animatesinitmode="show"
+                                                            style="visibility: visible; opacity: 1;"
+                                                            (click)="selectTemplate('TEMP2')">
+                                                            <!---->
+                                                            <!---->
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-8">
+                                                                        <div class="row ml-2">
+                                                                            <div class="col-md-3 text-center">
+                                                                                <img class="max-w-30 "
+                                                                                    src="assets/images/Coupons/electroncis.png"
+                                                                                    alt="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- <img class="card-img bg-transparent" style="width: 55px;" src="assets/images/Coupons/rectangle-28-copy-3.png" alt=""> -->
+                                                                        <h6 class="text-white mt-2">Offer Name</h6>
+                                                                        <span
+                                                                            class="text-white m-0 recommended">Recommended
+                                                                            for</span>
+                                                                        <p class="text-white m-0 heading1">Dining,
+                                                                            Health & Services etc</p>
+                                                                        <p class="text-white m-0 recommended">Category
+                                                                            of brands</p>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <p class="text-white recommended m-0">Lorem
+                                                                            Ipsum is simply dummy text</p>
+                                                                        <p class="text-white recommended m-0">of the
+                                                                            printing and</p>
+                                                                        <p class="text-white recommended m-0">
+                                                                            typesetting</p>
+                                                                        <p class="text-white recommended m-0">
+                                                                            typesetting</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="card-body p-0">
+                                        <div class="col-md-12 p-0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" style="font-weight: 600;"><label
+                                                            for="inputEmail9">Change
+                                                            Colors</label></div>
+                                                    <div class="row">
+                                                        <div class="col-1 block1 m-1" (click)="changeColor('#8ca1d0')">
+                                                        </div>
+                                                        <div class="col-1 block2 m-1" (click)="changeColor('#f87733')">
+                                                        </div>
+                                                        <div class="col-1 block3 m-1" (click)="changeColor('#eb7474')">
+                                                        </div>
+                                                        <div class="col-1 block4 m-1" (click)="changeColor('#8329e1')">
+                                                        </div>
+                                                        <div class="col-1 block5 m-1" (click)="changeColor('#50e3c2')">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="card-body float-right mt-3 text-center">
+                            <div class="row mb-2">
+                                <button class="btn btn-outline-primary rounded-pill btn-clr m-1"
+                                    (click)="saveAsDraft(startDate,endDate)" mat-button matStepperNext>Save as
+                                    draft</button>
+                                <button class="btn rounded-pill btn-clr1 m-1" (click)="createOffer()">Create
+                                    Offer</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step [stepControl]="createOfferForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p class="createoffer">Create an Offer</p>
+                                <p class="copy">Instructions to update offer</p>
+                                <p>1. Click on the relevant offer elements and edit the text or change the image.</p>
+                                <p>2. To change placement / location of an offer element, drag and drop it at the
+                                    intended location within the offer card.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="font-weight: 600;"><label for="inputEmail10">Edit Your
+                                        Offer Template</label>
+
+                                    <div class="card-body p-0">
+                                        <div class="col-md-12 p-0">
+                                            <form [formGroup]="createOfferForm">
+                                                <div class="row">
+                                                    <div *ngIf="template === 'TEMP1'">
+                                                        <div class="col-md-6 mb-2 ">
+                                                            <div [ngStyle]="backgroundCss" id="offerfrond"
+                                                                class="card offer" animates="" animatesinitmode="show">
+                                                                <div class="card-body"
+                                                                    (click)="selectTemplate('TEMP1')">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9 ">
+                                                                            <div class="form-group"
+                                                                                *ngIf="createOfferForm.value.lmofferTitle">
+                                                                                <input cdkDragBoundary=".offer"
+                                                                                    type="text"
+                                                                                    class="template text-white form-control"
+                                                                                    [value]="createOfferForm.value.lmofferTitle"
+                                                                                    placeholder="Offer Name"
+                                                                                    formControlName="lmofferTitle"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                            <div class="form-group"
+                                                                                *ngIf="createOfferForm.value.lmofferType">
+                                                                                <input cdkDragBoundary=".offer"
+                                                                                    type="text"
+                                                                                    class="template text-white form-control"
+                                                                                    [value]="createOfferForm.value.lmofferType"
+                                                                                    placeholder="Offer Type"
+                                                                                    formControlName="lmofferType"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                            <div class="form-group"
+                                                                                *ngIf="createOfferForm.value.offerStartDate">
+                                                                                <input cdkDragBoundary=".offer"
+                                                                                    type="text"
+                                                                                    class="template text-white form-control"
+                                                                                    [value]="createOfferForm.value.offerStartDate"
+                                                                                    placeholder="Offer Start Date"
+                                                                                    formControlName="offerStartDate"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                            <div class="form-group"
+                                                                                *ngIf="createOfferForm.value.offerExpiryDate">
+                                                                                <input cdkDragBoundary=".offer"
+                                                                                    type="text"
+                                                                                    class="template text-white form-control"
+                                                                                    [value]="createOfferForm.value.offerExpiryDate"
+                                                                                    placeholder="Offer End Date"
+                                                                                    formControlName="offerExpiryDate"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Commenting because image upload is not done -->
+                                                                        <!-- <div class="col-md-2 text-center"
+                                                                            cdkDragBoundary=".offer" cdkDrag>
+                                                                            <img class="card-img bg-transparent"
+                                                                                src="createOfferForm.value.webOfferImage1"
+                                                                                alt="">
+                                                                        </div> -->
+                                                                    </div>
+                                                                    <div class="row mt-2" cdkDragBoundary=".offer"
+                                                                        cdkDrag>
+                                                                        <div class="col-md-12 form-group"
+                                                                            *ngIf="createOfferForm.value.lmdescription">
+                                                                            <input
+                                                                                class="template m-0 form-control text-white"
+                                                                                type="textarea" cdkDragBoundary=".offer"
+                                                                                [value]="createOfferForm.value.lmdescription"
+                                                                                placeholder="Offer Description"
+                                                                                formControlName="lmdescription" cdkDrag>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div [ngStyle]="backgroundCss" class="card offer"
+                                                                id="offerback" animates="" animatesinitmode="show">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <h6 class="text-white recommended">Terms &
+                                                                            Conditions</h6>
+                                                                        <div class="row m-1 form-group">
+                                                                            <p *ngIf="createOfferForm.value.offer_TAndC_UsageTerms"
+                                                                                class="text-white recommended form-control template">
+                                                                                Use for
+                                                                                {{createOfferForm.value.offer_TAndC_UsageTerms}}
+                                                                            </p><br>
+                                                                            <p
+                                                                                class="text-white recommended form-control template">
+                                                                                Applicable on
+                                                                                {{createOfferForm.value.offer_TAndC_ApplicableOn}}
+                                                                            </p><br>
+                                                                            <p
+                                                                                class="text-white recommended form-control template">
+                                                                                Valid for
+                                                                                {{createOfferForm.value.offer_TAndC_ValidFor}}
+                                                                            </p><br>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="template === 'TEMP2'">
+                                                        <div class="col-md-6 mb-2">
+                                                            <div [ngStyle]="backgroundCss1"
+                                                                class="card offer1 cursor-pointer" animates=""
+                                                                animatesinitmode="show"
+                                                                style="visibility: visible; opacity: 1;"
+                                                                (click)="selectTemplate('TEMP2')">
+                                                                <!---->
+                                                                <!---->
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="row ml-2">
+                                                                                <!-- Commenting because image upload is not done -->
+                                                                                <!-- <div class="col-md-3 text-center"
+                                                                                    cdkDragBoundary=".offer1" cdkDrag>
+                                                                                    <img class="max-w-30"
+                                                                                        src="createOfferForm.value.webOfferImage1"
+                                                                                        alt=""
+                                                                                        formControlName="webOfferImage1">
+                                                                                </div> -->
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input cdkDragBoundary=".offer1"
+                                                                                    class="text-white mt-2 template"
+                                                                                    value="Offer Name"
+                                                                                    [value]="createOfferForm.value.lmofferTitle"
+                                                                                    placeholder="Offer Name"
+                                                                                    formControlName="lmofferTitle"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <input cdkDragBoundary=".offer1"
+                                                                                    class="text-white m-0  template"
+                                                                                    [value]="createOfferForm.value.lmofferType"
+                                                                                    placeholder="Offer Type"
+                                                                                    formControlName="lmofferType"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                            <div class="form-group"
+                                                                                *ngIf="createOfferForm.value.offerStartDate">
+                                                                                <input cdkDragBoundary=".offer1"
+                                                                                    type="text"
+                                                                                    class="template text-white form-control"
+                                                                                    [value]="createOfferForm.value.offerStartDate"
+                                                                                    placeholder="Offer Start Date"
+                                                                                    formControlName="offerStartDate"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                            <div class="form-group"
+                                                                                *ngIf="createOfferForm.value.offerExpiryDate">
+                                                                                <input cdkDragBoundary=".offer1"
+                                                                                    type="text"
+                                                                                    class="template text-white form-control"
+                                                                                    [value]="createOfferForm.value.offerExpiryDate"
+                                                                                    placeholder="Offer End Date"
+                                                                                    formControlName="offerExpiryDate"
+                                                                                    cdkDrag>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 "
+                                                                            *ngIf="createOfferForm.value.lmdescription">
+                                                                            <input
+                                                                                class="template m-0 form-control text-white"
+                                                                                type="textarea"
+                                                                                cdkDragBoundary=".offer1"
+                                                                                [value]="createOfferForm.value.lmdescription"
+                                                                                placeholder="Offer Description"
+                                                                                formControlName="lmdescription" cdkDrag>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div [ngStyle]="backgroundCss1" class="card offer"
+                                                                id="offerback" animates="" animatesinitmode="show">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <h6 class="text-white recommended">Terms &
+                                                                            Conditions</h6>
+                                                                        <div class="row m-1 form-group">
+                                                                            <p *ngIf="createOfferForm.value.offer_TAndC_UsageTerms"
+                                                                                class="text-white recommended form-control template">
+                                                                                Use for
+                                                                                {{createOfferForm.value.offer_TAndC_UsageTerms}}
+                                                                            </p>
+                                                                            <p
+                                                                                class="text-white recommended form-control template">
+                                                                                Applicable on
+                                                                                {{createOfferForm.value.offer_TAndC_ApplicableOn}}
+                                                                            </p>
+                                                                            <p
+                                                                                class="text-white recommended form-control template">
+                                                                                Valid for
+                                                                                {{createOfferForm.value.offer_TAndC_ValidFor}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card-body p-0">
+                                    <div class="col-md-12 p-0">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group" style="font-weight: 600;"><label
+                                                        for="inputEmail11">Change
+                                                        Colours</label></div>
+                                                <div class="row">
+                                                    <div class="col-1 block1 m-1" (click)="changeColor('#8ca1d0')">
+                                                    </div>
+                                                    <div class="col-1 block2 m-1" (click)="changeColor('#f87733')">
+                                                    </div>
+                                                    <div class="col-1 block3 m-1" (click)="changeColor('#eb7474')">
+                                                    </div>
+                                                    <div class="col-1 block4 m-1" (click)="changeColor('#8329e1')">
+                                                    </div>
+                                                    <div class="col-1 block5 m-1" (click)="changeColor('#50e3c2')">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body float-right mt-3 text-center">
+                            <div class="row mb-2">
+                                <button class="btn btn-outline-primary rounded-pill btn-clr m-1" data-toggle="modal"
+                                    data-target="#previewModal" (click)="previewTemplate()">Preview Template</button>
+                                <button class="btn rounded-pill btn-clr1 m-1" (click)="finaliseOffer()">Create
+                                    Offer</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Coupon Preview</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="mb-3" src="{{createOfferForm.value.frontTemplateUrl}}">
+                <img src="{{createOfferForm.value.backTemplateUrl}}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn rounded-pill btn-clr1 m-1" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

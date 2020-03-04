@@ -1,0 +1,91 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light container mt-0">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile -->
+            </span>
+            <a class="navbar-brand">
+                <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+            </a>
+            <ul class="navbar-nav ml-auto flex-nowrap ">
+                <li class="nav-item">
+                    <a [routerLink]="['/payment/subscription']" class="nav-link  menu-item nav-active">Subscription
+                        Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://consumer.gobaskt.com/" class="nav-link  menu-item">Consumer Portal</a>
+                </li>
+            </ul>
+            <!-- <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div> -->
+        </div>
+        <!-- <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a [routerLink]="['/payment/subscription']" class="nav-link  menu-item nav-active">Subscription
+                        Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/consumer/home']" class="nav-link  menu-item">Consumer Portal</a>
+                </li>
+            </ul>
+        </div> -->
+    </nav>
+</header>
+<div class="pt-3 login-bg">
+    <div class="container">
+        <div class="row m-0">
+            <div class="col-md-6">
+                <img class="img-fluid max-165" src="assets/images/login-bg.png" alt="signup" />
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default cus-bg">
+                    <div>
+                        <h3 class="title-partner">Partner Login</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" [formGroup]="merchantLoginForm"
+                            (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="fname" class="form-control inpt" formControlName="emailId"
+                                        id="inputfName" [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }"
+                                        placeholder="Email Id" required pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
+                                    <span class="invalid-feedback cust-feedback-align"
+                                        *ngIf="f.emailId.errors?.required">Enter
+                                        Email Id</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="password" class="form-control inpt" formControlName="password"
+                                        id="inputlName" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                        placeholder="Password" required >
+                                    <span class="invalid-feedback cust-feedback-align"
+                                        *ngIf="f.password.errors?.required">Enter your
+                                        Password</span>
+                                </div>
+                            </div>
+                            <div class="form-group last">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="col-sm-12 btn-clr-blue btn btn-sm">
+                                        Sign In</button>
+                                    <div *ngIf="errMsg">
+                                        <p class="mail-already-exist">Invalid Credentials!</p>
+                                    </div>
+                                    <p class="text-center pt-3"> Already a partner? If not,  <span
+                                            class="f-bold clr-blue cursor-pointer"
+                                            [routerLink]="['/auth/signup','merchant']">Click
+                                            Here</span></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

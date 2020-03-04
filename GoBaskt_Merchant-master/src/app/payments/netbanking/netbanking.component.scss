@@ -1,0 +1,61 @@
+.background {
+  background-color: rgba(171, 198, 255, 0.39);
+}
+
+.card-details {
+  border: none;
+  background: #ddd0;
+  border-bottom: 2px solid #ccc;
+}
+
+.bankCard {
+  height: 52px;
+  width: 194px;
+}
+
+.dash {
+  border: 1px dashed #000000;
+
+}
+
+.drop {
+  border: 10px black;
+}
+
+.pay {
+  background-color: #2d3263;
+  width: 440px;
+  height: 51px;
+  border-radius: 28.5px;
+  border: black;
+}
+
+.table :hover {
+  color: black;
+  background-color: skyblue;
+}
+
+.head {
+  color: #2d3263;
+}
+
+.go {
+  font-weight: bold;
+  color: #2d3263;
+  font-size: 25px;
+}
+
+.sidebar {
+  height: 600px;
+  width: 400px;
+}
+
+.sidebtn {
+  width: 300px;
+  height: 100px;
+}
+
+.sidebtn:hover {
+  background-color: white;
+
+}

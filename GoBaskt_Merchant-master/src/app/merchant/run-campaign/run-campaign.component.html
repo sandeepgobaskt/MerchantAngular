@@ -1,0 +1,94 @@
+<div class="row followers" style="margin: 0;">
+    <div class="col-3 background">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-9">
+        <div class="pb-4 pr-0">
+            <div class="row">
+            </div>
+            <mat-horizontal-stepper #stepper>
+                <mat-step>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="font-family: Montserrat, monospace">
+                                    <p class="createoffer mb-5" style="margin: 0;">Choose Campaign Type</p>
+                                    <input type="radio" name="campaign" value="offer" class="mb-3" checked> Offer
+                                    Campaign<br>
+                                    <input type="radio" name="campaign" value="display"> Display Ad Campaign
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body float-right mt-3">
+                            <div class="row">
+                                <button class="btn rounded-pill ml-4 btn-clr1" mat-button matStepperNext>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <div class="card-body" style="font-family: Montserrat, monospace"  *ngFor="let offers of offerData">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p class="createoffer">Offer Campaign</p>
+                                <p>To create and start your coupon campaign, please
+                                    complete the below form, save and submit the details:</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="copy">Choose a valid Offer -</p>
+                                <div class="form-group">
+                                    <div><input type="checkbox" id="exampleCheck1">
+                                        <label><img src="{{offers.frontTemplateUrl}}"></label>
+                                        <input type="checkbox" id="exampleCheck2">
+                                        
+                                    </div>
+                                </div>
+                                <p class="copy">Publish to our channels :</p>
+                                <ul style="list-style-type:square;">
+                                    <li>Facebook Messenger</li>
+                                    <li>Alexa voice & mobile app</li>
+                                    <li>Google home & assistant mobile app</li>
+                                    <li>Website- https://www.gobaskt.com</li>
+                                    <li>GoBaskt Mobile App- Android & IOS</li>
+                                </ul>
+                                <div class="row text-center mb-2">
+                                    <button class="btn rounded-pill ml-4 btn-clr1" style="width: 50px;">OK</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3>Campaign performance metrics you can track:</h3>
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <ul>
+                                                    <li>Number of matching user searches</li>
+                                                    <li>Number of clips</li>
+                                                    <li>Number of redemptions</li>
+                                                    <li>$value of redemptions</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class=" border-camp p-10 m-2 text-center">
+                                                    <span style="color:rgb(255, 0, 106);">Mark as Read</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body float-right mt-3">
+                            <div class="row">
+                                <button class="btn rounded-pill ml-4 btn-clr1" (click)="runOfferCampaign(offers.id)">Run
+                                    Campaign</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+
+        </div>
+    </div>
+</div>

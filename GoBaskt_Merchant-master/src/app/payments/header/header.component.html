@@ -1,0 +1,24 @@
+<div class="bg-light-blue">
+    <!-- [ngClass]="bgClass" -->
+    <nav class="navbar navbar-expand-lg navbar-light container mt-0">
+        <div class="d-flex">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a [routerLink]="['/consumer/home']" class="navbar-brand">
+                <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+            </a>
+            <!-- <div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div> -->
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav flex-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link  menu-item nav-active">Merchant Plans</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,21 @@
+<div class="clearfix container mb-5">
+    <div><a class="navbar-brand text-center">
+            <img class="img-fluid mt-3 pb-3" style="width:80%;" src="assets/images/logo.png" alt="Theme-Logo" />
+        </a></div>
+    <div>
+        <img class="image" src="../../../assets/images/eric-stockman.svg">
+    </div>
+    <div class="font-weight-bolder my-3 cursor">
+        <p><strong>Welcome {{bpname}},</strong></p>
+    </div>
+    <ul style="list-style: none;" class="p-0">
+        <li [routerLink]="['/merchant/dashboard']" class="font-weight-bold my-4 cursor">Dashboard</li>
+        <li [routerLink]="['/merchant/draft-offer']" class="font-weight-bold my-4 cursor">Create Offers</li>
+        <li class="font-weight-bold my-4 cursor"><a>Create Display Ad</a></li>
+        <li [routerLink]="['/merchant/run-compaign']" class="font-weight-bold my-4 cursor"><a>Run Compaign</a></li>
+        <li class="font-weight-bold my-4 cursor"><a>Past Offers</a></li>
+        <li class="font-weight-bold my-4 cursor"><a>Past Ads</a></li>
+        <li class="font-weight-bold my-4 cursor"><a>Past Campaigns</a></li>
+        <li class="font-weight-bold my-4 cursor"><a>Account Settings</a></li>
+    </ul>
+</div>

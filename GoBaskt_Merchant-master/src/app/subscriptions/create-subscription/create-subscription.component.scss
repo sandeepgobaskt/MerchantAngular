@@ -1,0 +1,30 @@
+.USD {
+    width: 24px;
+    height: 13px;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.65px;
+    text-align: left;
+    color: #777777;
+    display: contents;
+  }
+  .Search {
+    width: 162px;
+    height: 24px;
+    border-radius: 13px;
+    border: solid 0.5px #777777;
+    background-color: var(--white);
+  }
+  .bell_icon {
+   color: #777777;
+  }
+  .Rectangle-24 {
+    
+    background-color: #f0f0f0;
+  }
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }

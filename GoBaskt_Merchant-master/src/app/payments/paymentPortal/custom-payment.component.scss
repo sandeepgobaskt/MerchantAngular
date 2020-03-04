@@ -1,0 +1,32 @@
+.table :hover {
+  color: black;
+  background-color: skyblue;
+}
+
+.head {
+  color: #2d3263;
+}
+
+.go {
+  font-weight: bold;
+  color: #2d3263;
+  font-size: 25px;
+}
+
+.sidebar {
+  background-color: rgba(171, 198, 255, 0.39);
+}
+
+.sidebtn {
+  width: 300px;
+  height: 100px;
+}
+
+.sidebar:hover {
+
+  .active {
+    background-color: white;
+    color: white !important;
+  }
+
+}

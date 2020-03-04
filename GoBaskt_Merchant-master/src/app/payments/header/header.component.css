@@ -1,0 +1,28 @@
+.fs-bage {
+    font-size: 10px;
+    position: relative;
+    top: 10px;
+    border-radius: 25px;
+    right: 4px;
+    background-color: #ffd35f;
+    padding: 5px 7px;
+}
+
+.menu-img {
+    width: 20px;
+    margin-right: 16px;
+}
+
+.categories-text-underline {
+    text-align: center;
+    border-top: 1px solid #000;
+    font-weight: 600;
+}
+
+.mat-menu-item {
+    padding: 0px 26px;
+}
+
+agm-map {
+    height: 300px;
+}

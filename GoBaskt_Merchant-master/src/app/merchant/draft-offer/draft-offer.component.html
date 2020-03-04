@@ -1,0 +1,200 @@
+<div class="row followers" style="margin: 0;" *ngIf="!saveDraft">
+    <div class="col-2 background">
+        <app-menu></app-menu>
+    </div>
+    <div class="col-10">
+        <div class="container-fluid pb-4 pr-0">
+            <div class="row">
+                <div class="col-md-6 mt-4">
+                    <p class="createoffer" style="margin: 0;">Please enter details</p>
+                    <p class="createoffer" style="margin: 0;">of offer to be created</p>
+                    <span>(Approx. time needed - 3 mins)</span>
+                    <p class="copy mt-3">To copy a past expired or ongoing offer</p>
+                    <!-- <input class="coupon mb-3" placeholder="Search here" type="text"> -->
+                    <div class="mb-2" style="margin-left: 60%;">
+                        <mat-search-bar>Search here</mat-search-bar>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form [formGroup]="createOfferForm">
+                    <p class="createoffer">Create an Offer</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                                <mat-label>Offer Title</mat-label>
+                                <input matInput placeholder="Ex: 15% Off" maxlength="40" formControlName="lmofferTitle"
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Offer Description</mat-label>
+                                <input matInput placeholder="Write your desciption here" maxlength="100"
+                                    formControlName="lmdescription" required>
+                            </mat-form-field>
+                            <div>
+                                <label>Offer Terms & Conditions</label>
+                            </div>
+                            <mat-form-field class="full-width">
+                                <mat-label>Usage Terms</mat-label>
+                                <mat-select matInput formControlName="offer_TAndC_UsageTerms" required>
+                                    <mat-option value="Single Use Only">Single Use Only</mat-option>
+                                    <mat-option value="Multiple Use For One Person">Multiple Use For One Person
+                                    </mat-option>
+                                    <mat-option value="Multiple Use Ofr Multiple Persons">Multiple Use Ofr Multiple
+                                        Persons</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Applicable On</mat-label>
+                                <mat-select matInput formControlName="offer_TAndC_ApplicableOn" required>
+                                    <mat-option value="All">All</mat-option>
+                                    <mat-option value="Subs">Subs</mat-option>
+                                    <mat-option value="Dosa">Dosa</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Valid For</mat-label>
+                                <mat-select matInput formControlName="offer_TAndC_ValidFor" required>
+                                    <mat-option value="Delivery and In-store Purchase">Delivery and In-store Purchase
+                                    </mat-option>
+                                    <mat-option value="In-store Only">In-store Only</mat-option>
+                                    <mat-option value="Delivery Only">Delivery Only</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                                <mat-label>Offer Type</mat-label>
+                                <mat-select matInput formControlName="lmofferType" required>
+                                    <mat-option value="Buy 1, Get 1 free">Buy 1, Get 1 free
+                                    </mat-option>
+                                    <mat-option value="% Off">% Off</mat-option>
+                                    <mat-option value="$ Off">$ Off</mat-option>
+                                    <mat-option value="Buy 1, get x% off on others">Buy 1, get x% off on others
+                                    </mat-option>
+                                    <mat-option value="Get $ value off on others">Get $ value off on others</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Offer Value</mat-label>
+                                <input matInput placeholder="Ex: 15" maxlength="3" formControlName="lmofferValue"
+                                    required>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Choose Start Date</mat-label>
+                                <input matInput [matDatepicker]="picker" fromControlName="offerStartDate" required [min]="minDate" [max]="maxDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Choose Expiry Date</mat-label>
+                                <input matInput [matDatepicker]="picker1" fromControlName="offerExpiryDate" required [min]="minDate" [max]="maxDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                            <div>
+                                <label class="btn btn-default">
+                                  <input type="file" (change)="selectFile($event)">
+                                </label>
+                                
+                                <!-- <button class="btn btn-success" [disabled]="!selectedFiles" >Upload</button> -->
+                           
+                           </div> </div>
+                    </div>
+                    <label>Choose Card Template</label>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <mat-card class="offer cursor-pointer full-width" [ngStyle]="backgroundCss"
+                                (click)="selectTemplate('TEMP1')">
+                                <div class="row">
+                                    <!-- <div class="col-md-9"> -->
+                                    <div class="col-md-12">
+                                        <h6 class="text-white text-center heading1">Mechant Name</h6>
+                                        <h6 class="text-white text-center heading1">Offer Name</h6>
+                                        <div class="row text-center">
+                                            <div class="col">
+                                                <p class="text-white m-0 heading1">Offer Description</p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-white m-0 heading1">Offer Expiry</p>
+                                            </div>
+                                        </div>
+                                        <div class="row text-center">
+                                            <div class="col">
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-white m-0 heading1">Address</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <!-- Commenting the image part -->
+                                    <div class="col-md-2  text-center">
+                                        <img class="m-0" src="assets/images/Coupons/order.png" alt="">
+                                    </div> 
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <mat-card class="offer cursor-pointer full-width" [ngStyle]="backgroundCss1"
+                                (click)="selectTemplate('TEMP2')">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Commenting the image part -->
+                                         <div class="row ml-2">
+                                            <div class="col-md-3 text-center">
+                                                <img class="max-w-30 " src="assets/images/Coupons/electroncis.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <!-- <img class="card-img bg-transparent" style="width: 55px;" src="assets/images/Coupons/rectangle-28-copy-3.png" alt=""> -->
+                                        <h6 class="text-white mt-2 heading1">Merchant Name</h6>
+                                        <h6 class="text-white mt-2 heading1">Offer Name</h6>
+                                        <p class="text-white m-0 heading1">Offer Desciption</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-white mt-2 heading1">Offer Expiry</p>
+                                        <p class="text-white mt-2 heading1">Offer Value</p>
+                                        <p class="text-white heading1 m-0">Address</p>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <label>Choose a Color</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <mat-card class="col-1 block1 m-1 cursor-pointer" (click)="changeColor('#8ca1d0')">
+                                </mat-card>
+                                <mat-card class="col-1 block2 m-1 cursor-pointer" (click)="changeColor('#f87733')">
+                                </mat-card>
+                                <mat-card class="col-1 block3 m-1 cursor-pointer" (click)="changeColor('#eb7474')">
+                                </mat-card>
+                                <mat-card class="col-1 block4 m-1 cursor-pointer" (click)="changeColor('#8329e1')">
+                                </mat-card>
+                                <mat-card class="col-1 block5 m-1 cursor-pointer" (click)="changeColor('#50e3c2')">
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-card-actions class="float-right mt-3 text-center">
+                        <button type="button" mat-raised-button class="btn btn-outline-primary rounded-pill btn-clr m-1"
+                            (click)="saveAsDraft()">Save As
+                            Draft</button>
+                        <button type="button" mat-raised-button class="btn rounded-pill btn-clr1 m-1">Create
+                            Offer</button>
+                    </mat-card-actions>
+                
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div *ngIf="saveDraft">
+    <app-finalise-offer [draftedData]="createOfferForm.value"></app-finalise-offer>
+</div>
+
+
